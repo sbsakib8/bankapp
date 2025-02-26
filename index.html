@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Bank App</title>
+  </head>
+  <body  class="bg-gray-100 p-10">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-center mb-4">Flower Bank</h2>
+      <p class="text-lg font-semibold">Current Balance: $<span id="balance">0</span></p>
+      
+      <div class="mt-4">
+          <input type="number" id="amount" placeholder="Enter amount" class="border p-2 w-full">
+          <button onclick="addMoney()" class="bg-green-500 text-white px-4 py-2 rounded mt-2 w-full">Add Money</button>
+          <button onclick="withdrawMoney()" class="bg-red-500 text-white px-4 py-2 rounded mt-2 w-full">Withdraw Money</button>
+      </div>
+      
+      <h3 class="text-xl font-semibold mt-6">Transaction History</h3>
+      <ul id="transactions" class="mt-2 bg-gray-50 p-2 rounded text-sm">
+   
+      <!-- <li>2/26/2025, 8:05:32 PM - Add: $65.00</li>     
+      <li>2/26/2025, 8:05:32 PM - Add: $65.00</li>     
+      <li>2/26/2025, 8:05:32 PM - Add: $65.00</li>     
+      <li>2/26/2025, 8:05:32 PM - Add: $65.00</li>     
+      <li>2/26/2025, 8:05:32 PM - Add: $65.00</li>  
+       -->
+      
+      </ul>
+  </div>
+  
+  <!-- js link -->
+   <script src="./index.js"></script>
+  </body>
+</html>
