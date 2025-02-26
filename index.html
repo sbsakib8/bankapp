@@ -14,8 +14,8 @@
       
       <div class="mt-4">
           <input type="number" id="amount" placeholder="Enter amount" class="border p-2 w-full">
-          <button onclick="addMoney()" class="bg-green-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Add Money</button>
-          <button onclick="withdrawMoney()" class="bg-red-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Withdraw Money</button>
+          <button id="addMoney" class="bg-green-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Add Money</button>
+          <button id="withdrawMoney" class="bg-red-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Withdraw Money</button>
       </div>
       
       <h3 class="text-xl font-semibold mt-6">Transaction History</h3>
@@ -39,7 +39,10 @@
 const balanceDisplay = document.getElementById("balance");
 const transactionsList = document.getElementById("transactions");
 
-function addMoney() {
+const addMoney = document.getElementById("addMoney")
+
+    addMoney.addEventListener("click",
+    function addMoney() {
     let amount = parseFloat(document.getElementById("amount").value);
     if (amount > 0) {
         balance += amount;
@@ -49,9 +52,15 @@ function addMoney() {
     } else {
         alert("Please enter a valid amount.");
     }
-}
+    }
+     );
 
-function withdrawMoney() {
+
+
+const withdrawMoney = document.getElementById("withdrawMoney")
+
+    withdrawMoney.addEventListener("click",
+    function withdrawMoney() {
     let amount = parseFloat(document.getElementById("amount").value);
     if (amount > 0 && amount <= balance) {
         balance -= amount;
@@ -62,6 +71,9 @@ function withdrawMoney() {
         alert("don't have enough funds to withdraw");
     }
 }
+    )
+
+
 
 function updateBalance() {
     balanceDisplay.textContent = balance.toFixed(2);
