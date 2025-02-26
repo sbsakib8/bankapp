@@ -14,8 +14,8 @@
       
       <div class="mt-4">
           <input type="number" id="amount" placeholder="Enter amount" class="border p-2 w-full">
-          <button onclick="addMoney()" class="bg-green-500 text-white px-4 py-2 rounded mt-2 w-full">Add Money</button>
-          <button onclick="withdrawMoney()" class="bg-red-500 text-white px-4 py-2 rounded mt-2 w-full">Withdraw Money</button>
+          <button onclick="addMoney()" class="bg-green-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Add Money</button>
+          <button onclick="withdrawMoney()" class="bg-red-500 text-white px-4 py-2 rounded mt-2 w-full cursor-pointer">Withdraw Money</button>
       </div>
       
       <h3 class="text-xl font-semibold mt-6">Transaction History</h3>
@@ -32,6 +32,46 @@
   </div>
   
   <!-- js link -->
-   <script src="./index.js"></script>
+   <!-- <script src="./index.js"></script> -->
+
+   <script>
+    let balance = 0;
+const balanceDisplay = document.getElementById("balance");
+const transactionsList = document.getElementById("transactions");
+
+function addMoney() {
+    let amount = parseFloat(document.getElementById("amount").value);
+    if (amount > 0) {
+        balance += amount;
+        updateBalance();
+        addTransaction("Add", amount);
+        document.getElementById("amount").value = "";
+    } else {
+        alert("Please enter a valid amount.");
+    }
+}
+
+function withdrawMoney() {
+    let amount = parseFloat(document.getElementById("amount").value);
+    if (amount > 0 && amount <= balance) {
+        balance -= amount;
+        updateBalance();
+        addTransaction("Withdraw", amount);
+        document.getElementById("amount").value = "";
+    } else {
+        alert("don't have enough funds to withdraw");
+    }
+}
+
+function updateBalance() {
+    balanceDisplay.textContent = balance.toFixed(2);
+}
+
+function addTransaction(type, amount) {
+    const now = new Date();
+    const transaction = `<li>${now.toLocaleString()} - ${type}: $${amount.toFixed(2)}</li>`;
+    transactionsList.innerHTML += transaction;
+}
+   </script>
   </body>
 </html>
